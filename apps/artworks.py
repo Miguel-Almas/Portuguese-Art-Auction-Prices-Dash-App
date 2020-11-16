@@ -15,10 +15,9 @@ from app import app
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../assets").resolve()
-path_github = 'https://github.com/Miguel-Almas/Portuguese-Art-Auction-Prices-Dash-App/blob/master/assets/'
+path = '../assets'
 
-
-df_cml = pd.read_csv(path_github+'data_cml_processed.csv',index_col=0)
+df_cml = pd.read_csv(path+'data_cml_processed.csv',index_col=0)
 df_cml = df_cml[df_cml['1 Author'] != 'no information']
 df_cml['Final Price'] = np.exp(df_cml['Final Price'])
 
@@ -207,7 +206,7 @@ def display_image(n,value):
         tmp = pd.DataFrame(tmp_entry.apply(lambda x: str(x['Auction Number'])+'_'+str(x['Artwork Number']),axis=1))
         art_nbr = tmp[0].values[0]
         #img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
-        img = html.Img(src = path_github+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
+        img = html.Img(src = path+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
 
 
         #Also return some information on the painting title, technique, author, auction and sale price
@@ -226,7 +225,7 @@ def display_image(n,value):
         tmp = pd.DataFrame(tmp_entry.apply(lambda x: str(x['Auction Number'])+'_'+str(x['Artwork Number']),axis=1))
         art_nbr = tmp[0].values[0]
         #img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
-        img = html.Img(src = path_github+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
+        img = html.Img(src = path+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
 
         #Also return some information on the painting title, technique, author, auction and sale price
         artwork_artist = str.title(tmp_entry['1 Author'].values[0])
