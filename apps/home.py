@@ -24,7 +24,7 @@ SEED = 101
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../assets").resolve()
-path = '../assets/'
+path = '/app/assets/'
 
 #------------------------ Create a WordCount Image to display in Dash---------------------------------------------
 

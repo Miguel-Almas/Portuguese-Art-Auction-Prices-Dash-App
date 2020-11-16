@@ -15,7 +15,7 @@ from app import app
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../assets").resolve()
-path = '../assets/'
+path = '/app/assets/'
 
 df_cml = pd.read_csv(path+'data_cml_processed.csv',index_col=0)
 df_cml = df_cml[df_cml['1 Author'] != 'no information']
