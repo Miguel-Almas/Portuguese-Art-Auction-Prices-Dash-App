@@ -76,8 +76,6 @@ app.layout = html.Div([
 def display_page(pathname):
     if pathname == '/artworks':
         return artworks.layout
-    elif pathname == '/auctions':
-        return auctions.layout
     else:
         return home.layout
 
