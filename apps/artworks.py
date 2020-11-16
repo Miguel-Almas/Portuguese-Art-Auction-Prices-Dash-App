@@ -9,10 +9,14 @@ import pandas as pd
 import numpy as np
 from PIL import Image
 import dash_bootstrap_components as dbc
+import pathlib
 
 from app import app
+# get relative data folder
+PATH = pathlib.Path(__file__).parent
+DATA_PATH = PATH.joinpath("../assets").resolve()
 
-df_cml = pd.read_csv('.\\assets\\data_cml_processed.csv',index_col=0)
+df_cml = pd.read_csv(DATA_PATH.joinpath('data_cml_processed.csv'),index_col=0)
 df_cml = df_cml[df_cml['1 Author'] != 'no information']
 df_cml['Final Price'] = np.exp(df_cml['Final Price'])
 
