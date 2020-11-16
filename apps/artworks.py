@@ -16,7 +16,7 @@ from app import app
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../assets").resolve()
 
-df_cml = pd.read_csv(DATA_PATH.joinpath('data_cml_processed.csv'),index_col=0)
+df_cml = pd.read_csv('app/assets/data_cml_processed.csv',index_col=0)
 df_cml = df_cml[df_cml['1 Author'] != 'no information']
 df_cml['Final Price'] = np.exp(df_cml['Final Price'])
 
