@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 from app import app
 from app import server
 # import all pages in the app
-from apps import auctions, artworks, home
+from apps import artworks, home
 
 # building the navigation bar ex:
 # https://github.com/facultyai/dash-bootstrap-components/blob/master/examples/advanced-component-usage/Navbars.py

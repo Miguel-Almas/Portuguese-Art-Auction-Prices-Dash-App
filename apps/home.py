@@ -18,7 +18,7 @@ from io import BytesIO
 import pathlib
 from app import app
 # import all pages in the app
-from apps import auctions, artworks, home
+from apps import artworks, home
 
 SEED = 101
 # get relative data folder
