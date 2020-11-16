@@ -66,7 +66,10 @@ layout = html.Div([
     dbc.Container([
         dbc.Row([
           dbc.Col(
-            html.Img(src = path+"hammer.png",style={'width':'500px','height':'320px'}),style={'margin-top':'35px'}
+            image_filename = path+"hammer.png" # replace with your own image
+            encoded_image = base64.b64encode(open(image_filename, 'rb').read())
+            html.Img(src='data:image/png;base64,{}'.format(encoded_image),style={'width':'500px','height':'320px'}),style={'margin-top':'35px'}
+            #html.Img(src = path+"hammer.png",style={'width':'500px','height':'320px'}),style={'margin-top':'35px'}
           ),
           dbc.Col(
             dbc.Row([
