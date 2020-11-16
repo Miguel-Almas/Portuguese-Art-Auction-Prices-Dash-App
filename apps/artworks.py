@@ -10,6 +10,7 @@ import numpy as np
 from PIL import Image
 import dash_bootstrap_components as dbc
 import pathlib
+import base64
 
 from app import app
 # get relative data folder
