@@ -13,3 +13,4 @@ dash_table==4.10.1
 plotly==4.6.0
 gunicorn==19.3.0
 pathlib==1.0.1
+category_encoders==2.2.2
