@@ -20,8 +20,6 @@ click==7.1.2
 colorama==0.4.3
 colorthief==0.2.1
 compressed-rtf==1.0.6
-conda==4.8.3
-conda-package-handling==1.6.0
 constantly==15.1.0
 cryptography==2.8
 cssselect==1.1.0
