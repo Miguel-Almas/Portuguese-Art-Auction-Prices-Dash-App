@@ -208,7 +208,7 @@ def display_image(n,value):
         art_nbr = tmp[0].values[0]
         #img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
         #img = html.Img(src = path+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
-        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'\\CML\\'+art_nbr+'.jpg', 'rb').read()).decode()), style={'height':'390px'})
+        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'/CML/'+art_nbr+'.jpg', 'rb').read()).decode()), style={'height':'390px'})
 
         #Also return some information on the painting title, technique, author, auction and sale price
         artwork_artist = str.title(tmp_entry['1 Author'].values[0])
@@ -227,7 +227,7 @@ def display_image(n,value):
         art_nbr = tmp[0].values[0]
         #img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
         #img = html.Img(src = path+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
-        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'\\CML\\'+art_nbr+'.jpg', 'rb').read()).decode()), style={'height':'390px'})
+        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'/CML/'+art_nbr+'.jpg', 'rb').read()).decode()), style={'height':'390px'})
 
         #Also return some information on the painting title, technique, author, auction and sale price
         artwork_artist = str.title(tmp_entry['1 Author'].values[0])
