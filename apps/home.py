@@ -24,24 +24,25 @@ SEED = 101
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../assets").resolve()
+path_github = 'https://github.com/Miguel-Almas/Portuguese-Art-Auction-Prices-Dash-App/blob/master/assets/'
 
 #------------------------ Create a WordCount Image to display in Dash---------------------------------------------
 
 #df = pd.read_csv(DATA_PATH.joinpath("data_cml_processed.csv"),index_col=0)
-df = pd.read_csv("app/assets/data_cml_processed.csv",index_col=0)
+df = pd.read_csv(path_github+"data_cml_processed.csv",index_col=0)
 
 model_xgb = xgboost.XGBRegressor()
-model_xgb.load_model('app/assets/model.bin')
-joblib_model = joblib.load('app/assets/ridge_model.pkl')
+model_xgb.load_model(path_github+'model.bin')
+joblib_model = joblib.load(path_github+'ridge_model.pkl')
 
 #Get Series with Artist Name Frequency
 di = df[df['1 Author'] != 'no information']['1 Author'].value_counts()
 #Create mask with gavel shape for wordcloud
-gavel_mask = np.array(Image.open('app/assets/auction-hammer-symbol.jpg'))
+gavel_mask = np.array(Image.open(path_github+'auction-hammer-symbol.jpg'))
 #Create wordcloud
 wc = WordCloud(background_color='white',colormap='Dark2',mask=gavel_mask).generate_from_frequencies(frequencies=di)
 wc_img = wc.to_image()
-wc_img.save("app/assets/hammer.png","PNG")
+wc_img.save(path_github+"hammer.png","PNG")
 
 with BytesIO() as buffer:
     wc_img.save(buffer, 'png')
@@ -65,7 +66,7 @@ layout = html.Div([
     dbc.Container([
         dbc.Row([
           dbc.Col(
-            html.Img(src = "app/assets/hammer.png",style={'width':'500px','height':'320px'}),style={'margin-top':'35px'}
+            html.Img(src = path_github+"hammer.png",style={'width':'500px','height':'320px'}),style={'margin-top':'35px'}
           ),
           dbc.Col(
             dbc.Row([
@@ -415,8 +416,8 @@ def get_predictions(dim_1,dim_2,dim_3,birth_date,death_date,artist,technique):
           df_inserted['Shape_'+i] = 0        
 
   #Mean Encodings
-  df_map_author = pd.read_csv('app/assets/author_mapping_mean_encodings.csv')
-  df_map_colours = pd.read_csv('app/assets/colours_mapping_mean_encodings.csv')
+  df_map_author = pd.read_csv(path_github+'author_mapping_mean_encodings.csv')
+  df_map_colours = pd.read_csv(path_github+'colours_mapping_mean_encodings.csv')
 
   df_inserted['1 Author_mean_encoded'] = df_inserted['1 Author'].map(df_map_author.set_index('1 Author').to_dict()['median'])
   df_inserted['Dominant Colour Name_mean_encoded'] = df['Final Price'].mean()
@@ -430,7 +431,7 @@ def get_predictions(dim_1,dim_2,dim_3,birth_date,death_date,artist,technique):
 
   #Scaling 
   col_drop = ['1 Author','1 Author Birth','1 Author Death','Dim 1','Dim 2','Dim 3','Year','Technique','1 Author Birth Decade','1 Author Death Decade','Shape']
-  scaler = joblib.load('app/assets/scaler.gz')
+  scaler = joblib.load(path_github+'scaler.gz')
 
   list_reorder = ['Number of Authors', 'Number of Artworks', 'Year_2017.0', 'Year_2018.0', 'Year_2019.0', '1 Author Birth Decade_no information',
  '1 Author Birth Decade_1900-1910', '1 Author Birth Decade_séc. xx', '1 Author Birth Decade_1920-1930', '1 Author Birth Decade_1930-1940',

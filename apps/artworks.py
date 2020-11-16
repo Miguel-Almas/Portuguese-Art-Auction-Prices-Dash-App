@@ -19,6 +19,7 @@ DATA_PATH = PATH.joinpath("../assets").resolve()
 df_cml = pd.read_csv('app/assets/data_cml_processed.csv',index_col=0)
 df_cml = df_cml[df_cml['1 Author'] != 'no information']
 df_cml['Final Price'] = np.exp(df_cml['Final Price'])
+path_github = 'https://github.com/Miguel-Almas/Portuguese-Art-Auction-Prices-Dash-App/blob/master/assets/'
 
 #------------------------ Create a WordCount Image to display in Dash---------------------------------------------
 
@@ -204,7 +205,10 @@ def display_image(n,value):
         tmp_entry = df_cml.sample(1)
         tmp = pd.DataFrame(tmp_entry.apply(lambda x: str(x['Auction Number'])+'_'+str(x['Artwork Number']),axis=1))
         art_nbr = tmp[0].values[0]
-        img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
+        #img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
+        img = html.Img(src = path_github+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
+
+
         #Also return some information on the painting title, technique, author, auction and sale price
         artwork_artist = str.title(tmp_entry['1 Author'].values[0])
         artwork_title = str(tmp_entry['Title'].values[0])
@@ -220,7 +224,9 @@ def display_image(n,value):
         tmp_entry = df_cml[filt].sample(1)
         tmp = pd.DataFrame(tmp_entry.apply(lambda x: str(x['Auction Number'])+'_'+str(x['Artwork Number']),axis=1))
         art_nbr = tmp[0].values[0]
-        img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
+        #img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
+        img = html.Img(src = path_github+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
+
         #Also return some information on the painting title, technique, author, auction and sale price
         artwork_artist = str.title(tmp_entry['1 Author'].values[0])
         artwork_title = str(tmp_entry['Title'].values[0])
