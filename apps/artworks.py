@@ -15,11 +15,12 @@ from app import app
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../assets").resolve()
+path_github = 'https://github.com/Miguel-Almas/Portuguese-Art-Auction-Prices-Dash-App/blob/master/assets/'
 
-df_cml = pd.read_csv('app/assets/data_cml_processed.csv',index_col=0)
+
+df_cml = pd.read_csv(path_github+'data_cml_processed.csv',index_col=0)
 df_cml = df_cml[df_cml['1 Author'] != 'no information']
 df_cml['Final Price'] = np.exp(df_cml['Final Price'])
-path_github = 'https://github.com/Miguel-Almas/Portuguese-Art-Auction-Prices-Dash-App/blob/master/assets/'
 
 #------------------------ Create a WordCount Image to display in Dash---------------------------------------------
 
