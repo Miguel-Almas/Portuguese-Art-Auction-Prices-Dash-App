@@ -298,7 +298,7 @@ def update_output(value):
     dash.dependencies.Output('prediction', 'children'),
     [dash.dependencies.Input('slider-dim-1', 'value'),
     dash.dependencies.Input('slider-dim-2', 'value'),
-    3#dash.dependencies.Input('slider-dim-3', 'value'),
+    #dash.dependencies.Input('slider-dim-3', 'value'),
     dash.dependencies.Input('slider-birth-date', 'value'),
     dash.dependencies.Input('slider-death-date', 'value'),
     dash.dependencies.Input('artist-dropdown', 'value'),
