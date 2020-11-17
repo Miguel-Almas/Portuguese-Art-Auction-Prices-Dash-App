@@ -338,7 +338,7 @@ def get_predictions(dim_1,dim_2,dim_3,birth_date,death_date,artist,technique):
   df_inserted['Dim 2'] = df_inserted['Dim 2'].fillna(1)
   df_inserted['Dim 3'] = df_inserted['Dim 3'].fillna(1)
 
-  df_inserted['Area'] = df_inserted['Dim 1'] * df_inserted['Dim 2'] * df_inserted['Dim 3']
+  df_inserted['Area'] = df_inserted['Dim 1'] * df_inserted['Dim 2']
 
   if df_inserted['Area'].iloc[0] == 1:
       df_inserted['Area'] = df['Area'].mean()
