@@ -68,7 +68,7 @@ layout = html.Div([
           dbc.Col(
             html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+"hammer.png", 'rb').read()).decode()),style={'width':'500px','height':'320px'}),style={'margin-top':'35px'}
             #html.Img(src = path+"hammer.png",style={'width':'500px','height':'320px'}),style={'margin-top':'35px'}
-          ),
+          ,width=6),
           dbc.Col(
             dbc.Row([
               #html.H1("The Modern Portuguese Auctioned Art dashboard", className="text-center",style={
