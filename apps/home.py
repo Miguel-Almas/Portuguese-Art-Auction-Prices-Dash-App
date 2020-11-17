@@ -432,7 +432,7 @@ def get_predictions(dim_1,dim_2,dim_3,birth_date,death_date,artist,technique):
 
   #Scaling 
   col_drop = ['1 Author','1 Author Birth','1 Author Death','Dim 1','Dim 2','Dim 3','Year','Technique','1 Author Birth Decade','1 Author Death Decade','Shape']
-  scaler = joblib.load(path+'scaler.gz')
+  scaler = joblib.load(path+'scaler.bin')
 
   list_reorder = ['Number of Authors', 'Number of Artworks', 'Year_2017.0', 'Year_2018.0', 'Year_2019.0', '1 Author Birth Decade_no information',
  '1 Author Birth Decade_1900-1910', '1 Author Birth Decade_séc. xx', '1 Author Birth Decade_1920-1930', '1 Author Birth Decade_1930-1940',
