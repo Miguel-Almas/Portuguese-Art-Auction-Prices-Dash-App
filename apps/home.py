@@ -58,7 +58,7 @@ list_techniques = ['assinar', 'papel', 'datar', 'numerada', 'serigrafia', 'tecni
        'madeira', 'escultura', 'identificar', 'português', 'gravura',
        'policromada', 'assinatura', 'aguarela', 'tinta', 'china', 'fabricar',
        'falta', 'cromado', 'italiano', 'portugue', 'material', 'azulejo',
-       'platex', 'mancha', 'cristal', 'dourar', '"','autor', 'pintado',
+       'platex', 'mancha', 'cristal', 'dourar','autor', 'pintado',
        'prateado', 'plastico', 'prova', 'hc', 'relevado', 'base']
 
 #Set the Layout
