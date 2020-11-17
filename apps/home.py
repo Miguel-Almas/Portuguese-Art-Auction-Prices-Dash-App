@@ -467,7 +467,7 @@ def get_predictions(dim_1,dim_2,birth_date,death_date,artist,technique):
        'colagem', 'prateado', 'hc', '1 Author_mean_encoded',
        'Dominant Colour Name_mean_encoded']
 
-  df_final = scaler.transform(df_inserted.drop(col_drop+list_feats_drop,axis=1)[list_reorder])
+  df_final = df_inserted.drop(col_drop+list_feats_drop,axis=1)[list_reorder] #scaler.transform(df_inserted.drop(col_drop+list_feats_drop,axis=1)[list_reorder])
 
   #Make prediction
   #prediction = np.exp(model_xgb.predict(df_final))[0]
