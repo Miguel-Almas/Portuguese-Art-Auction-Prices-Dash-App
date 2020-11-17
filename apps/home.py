@@ -53,13 +53,13 @@ with BytesIO() as buffer:
 list_decades = []
 list_authors = ['No information'] + list(df[df['1 Author'] != 'no information']['1 Author'].str.title().value_counts().index)
 list_techniques = ['assinar', 'papel', 'datar', 'numerada', 'serigrafia', 'tecnica',
-       'marcar', 'tela', 'misturar', 'defeito', 'pequeno', 'oleo', 'sinal',
-       'europeu', 'uso', 'metal', 'decoracao', 'vidro', 'verso', 'acrilico',
-       'madeira', 'escultura', 'identificar', 'português', 'gravura',
-       'policromada', 'assinatura', 'aguarela', 'tinta', 'china', 'fabricar',
-       'falta', 'cromado', 'italiano', 'portugue', 'material', 'azulejo',
-       'platex', 'mancha', 'cristal', 'dourar','autor', 'pintado',
-       'prateado', 'plastico', 'prova', 'hc', 'relevado', 'base']
+         'misturar', 'tela','marcar', 'defeito', 'oleo', 'pequeno', 'sinal',
+         'uso','europeu', 'decoracao','metal', 'vidro', 'verso', 'acrilico',
+         'madeira', 'escultura', 'gravura', 'identificar', 'português', 
+         'tinta', 'policromada', 'china', 'fabricar', 'aguarela', 'assinatura',    
+         'azulejo', 'falta', 'mancha', 'portugue', '"', 'cromado', 'italiano',  'material', 
+         'platex',  'dourar','cristal',  'pintado', 'autor', 
+         'ceramica','humidade','colagem','prova','prateado', 'hc']
 
 #Set the Layout
 layout = html.Div([
@@ -364,13 +364,19 @@ def get_predictions(dim_1,dim_2,birth_date,death_date,artist,technique):
   df_inserted['1 Author Birth Decade'] = df_inserted['1 Author Birth Decade'].fillna('no information')
   df_inserted['1 Author Death Decade'] = df_inserted['1 Author Death Decade'].fillna('no information')
 
-  list_decades_birth = ['1 Author Birth Decade_no information','1 Author Birth Decade_1900-1910','1 Author Birth Decade_séc. xx','1 Author Birth Decade_1920-1930','1 Author Birth Decade_1910-1920',
-  '1 Author Birth Decade_1930-1940','1 Author Birth Decade_1940-1950','1 Author Birth Decade_1950-1960','1 Author Birth Decade_1970-1980','1 Author Birth Decade_séc. xix',
-  '1 Author Birth Decade_1890-1900','1 Author Birth Decade_1980-1990','1 Author Birth Decade_1960-1970','1 Author Birth Decade_1880-1890','1 Author Birth Decade_xx',
-  '1 Author Birth Decade_1870-1880','1 Author Birth Decade_1840-1850','1 Author Birth Decade_séc. xxi']
-  list_decades_death = ['1 Author Death Decade_no information','1 Author Death Decade_1990-2000','1 Author Death Decade_1980-1990','1 Author Death Decade_2000-2010','1 Author Death Decade_2010-2020',
-  '1 Author Death Decade_1970-1980','1 Author Death Decade_1940-1950','1 Author Death Decade_1960-1970','1 Author Death Decade_1950-1960','1 Author Death Decade_1920-1930',
-  '1 Author Death Decade_1900-1910','1 Author Death Decade_1930-1940','1 Author Death Decade_1910-1920']
+  list_decades_birth = ['1 Author Birth Decade_1950-1960',
+  '1 Author Birth Decade_séc. xx','1 Author Birth Decade_1940-1950','1 Author Birth Decade_1960-1970',
+  '1 Author Birth Decade_no information','1 Author Birth Decade_1930-1940',
+  '1 Author Birth Decade_1900-1910','1 Author Birth Decade_1920-1930',
+  '1 Author Birth Decade_1970-1980','1 Author Birth Decade_1910-1920','1 Author Birth Decade_1890-1900',
+  '1 Author Birth Decade_1990-2000','1 Author Birth Decade_1880-1890','1 Author Birth Decade_1870-1880',
+  '1 Author Birth Decade_1840-1850','1 Author Birth Decade_1980-1990','1 Author Birth Decade_séc. xix',
+  '1 Author Birth Decade_séc. xxi','1 Author Birth Decade_xx']
+
+  list_decades_death = ['1 Author Death Decade_no information','1 Author Death Decade_1990-2000','1 Author Death Decade_2010-2020',
+  '1 Author Death Decade_2000-2010','1 Author Death Decade_1960-1970','1 Author Death Decade_1980-1990','1 Author Death Decade_1950-1960',
+  '1 Author Death Decade_1970-1980','1 Author Death Decade_1910-1920','1 Author Death Decade_2020-2030','1 Author Death Decade_1940-1950',
+  '1 Author Death Decade_1920-1930','1 Author Death Decade_1900-1910','1 Author Death Decade_1930-1940']
 
   for i in list_decades_birth:
       if df_inserted['1 Author Birth Decade'].iloc[0] in i:
@@ -394,13 +400,13 @@ def get_predictions(dim_1,dim_2,birth_date,death_date,artist,technique):
           
   #Technique
   list_techniques = ['assinar', 'papel', 'datar', 'numerada', 'serigrafia', 'tecnica',
-         'marcar', 'tela', 'misturar', 'defeito', 'pequeno', 'oleo', 'sinal',
-         'europeu', 'uso', 'metal', 'decoracao', 'vidro', 'verso', 'acrilico',
-         'madeira', 'escultura', 'identificar', 'português', 'gravura',
-         'policromada', 'assinatura', 'aguarela', 'tinta', 'china', 'fabricar',
-         'falta', 'cromado', 'italiano', 'portugue', 'material', 'azulejo',
-         'platex', 'mancha', 'cristal', 'dourar', '"','autor', 'pintado',
-         'prateado', 'plastico', 'prova', 'hc', 'relevado', 'base']
+         'misturar', 'tela','marcar', 'defeito', 'oleo', 'pequeno', 'sinal',
+         'uso','europeu', 'decoracao','metal', 'vidro', 'verso', 'acrilico',
+         'madeira', 'escultura', 'gravura', 'identificar', 'português', 
+         'tinta', 'policromada', 'china', 'fabricar', 'aguarela', 'assinatura',    
+         'azulejo', 'falta', 'mancha', 'portugue', '"', 'cromado', 'italiano',  'material', 
+         'platex',  'dourar','cristal',  'pintado', 'autor', 
+         'ceramica','humidade','colagem','prova','prateado', 'hc']
 
   for i in list_techniques:
       if i in df_inserted['Technique'].iloc[0]:
@@ -425,25 +431,41 @@ def get_predictions(dim_1,dim_2,birth_date,death_date,artist,technique):
   #df_inserted['Dominant Colour Name_mean_encoded'] = df_inserted['Dominant Colour Name'].map(df_map_colours.set_index('Dominant Colour Name').to_dict()['median'])
 
   #Features to drop from feature importance
-  list_feats_drop = ['prova','cristal','1 Author Death Decade_1940-1950','platex','1 Author Death Decade_1970-1980','Year_2020.0','dourar','"','plastico',
-                     'base','material','prateado','1 Author Death Decade_2010-2020','1 Author Birth Decade_1980-1990','italiano','cromado','1 Author Death Decade_1950-1960',
-                     '1 Author Death Decade_1930-1940','aguarela','1 Author Death Decade_1910-1920','policromada','escultura','madeira','1 Author Birth Decade_1910-1920',
-                     '1 Author Birth Decade_1870-1880','metal','datar','1 Author Birth Decade_1950-1960','serigrafia','1 Author Death Decade_1960-1970']
+  list_feats_drop = ['1 Author Death Decade_1900-1910', '1 Author Birth Decade_séc. xix',
+       '1 Author Birth Decade_xx', '1 Author Birth Decade_1880-1890', 'prova',
+       '1 Author Death Decade_2000-2010', 'humidade',
+       '1 Author Death Decade_1960-1970', '1 Author Death Decade_1950-1960',
+       '1 Author Death Decade_1970-1980', '1 Author Death Decade_1910-1920',
+       '1 Author Death Decade_1920-1930', 'platex', 'gravura', 'escultura',
+       '1 Author Death Decade_1930-1940', 'Shape_Horizontal', 'Shape_Vertical',
+       '1 Author Birth Decade_1890-1900', 'falta', 'numerada', 'pequeno',
+       'aguarela', 'uso', 'madeira', 'tinta', 'português', 'italiano']
 
   #Scaling 
   col_drop = ['1 Author','1 Author Birth','1 Author Death','Dim 1','Dim 2','Dim 3','Year','Technique','1 Author Birth Decade','1 Author Death Decade','Shape']
   scaler = joblib.load(path+'scaler.bin')
 
-  list_reorder = ['Number of Authors', 'Number of Artworks', 'Year_2017.0', 'Year_2018.0', 'Year_2019.0', '1 Author Birth Decade_no information',
- '1 Author Birth Decade_1900-1910', '1 Author Birth Decade_séc. xx', '1 Author Birth Decade_1920-1930', '1 Author Birth Decade_1930-1940',
- '1 Author Birth Decade_1940-1950','1 Author Birth Decade_1970-1980', '1 Author Birth Decade_séc. xix', '1 Author Birth Decade_1890-1900',
- '1 Author Birth Decade_1960-1970', '1 Author Birth Decade_1880-1890', '1 Author Birth Decade_xx', '1 Author Birth Decade_1840-1850',
- '1 Author Birth Decade_séc. xxi', '1 Author Death Decade_no information', '1 Author Death Decade_1990-2000', '1 Author Death Decade_1980-1990',
- '1 Author Death Decade_2000-2010', '1 Author Death Decade_1920-1930', '1 Author Death Decade_1900-1910', 'Area', 'Shape_Square',
- 'Shape_Vertical', 'Shape_Horizontal', 'assinar', 'papel', 'numerada', 'tecnica', 'marcar', 'tela', 'misturar', 'defeito', 'pequeno',
- 'oleo', 'sinal', 'europeu', 'uso', 'decoracao', 'vidro', 'verso', 'acrilico', 'identificar', 'português', 'gravura', 'assinatura',
- 'tinta', 'china', 'fabricar', 'falta', 'portugue', 'azulejo', 'mancha', 'autor', 'pintado', 'hc', 'relevado', '1 Author_mean_encoded',
- 'Dominant Colour Name_mean_encoded']
+  list_reorder = ['Number of Authors', 'Number of Artworks', 'Year_2018.0', 'Year_2017.0',
+       'Year_2020.0', 'Year_2019.0', '1 Author Birth Decade_1950-1960',
+       '1 Author Birth Decade_séc. xx', '1 Author Birth Decade_1940-1950',
+       '1 Author Birth Decade_1960-1970',
+       '1 Author Birth Decade_no information',
+       '1 Author Birth Decade_1930-1940', '1 Author Birth Decade_1900-1910',
+       '1 Author Birth Decade_1920-1930', '1 Author Birth Decade_1970-1980',
+       '1 Author Birth Decade_1910-1920', '1 Author Birth Decade_1990-2000',
+       '1 Author Birth Decade_1870-1880', '1 Author Birth Decade_1840-1850',
+       '1 Author Birth Decade_1980-1990', '1 Author Birth Decade_séc. xxi',
+       '1 Author Death Decade_no information',
+       '1 Author Death Decade_1990-2000', '1 Author Death Decade_2010-2020',
+       '1 Author Death Decade_1980-1990', '1 Author Death Decade_2020-2030',
+       '1 Author Death Decade_1940-1950', 'Area', 'Shape_Square', 'assinar',
+       'papel', 'datar', 'serigrafia', 'tecnica', 'misturar', 'tela', 'marcar',
+       'defeito', 'oleo', 'sinal', 'europeu', 'decoracao', 'metal', 'vidro',
+       'verso', 'acrilico', 'identificar', 'policromada', 'china', 'fabricar',
+       'assinatura', 'azulejo', 'mancha', 'portugue', '"', 'cromado',
+       'material', 'dourar', 'cristal', 'pintado', 'autor', 'ceramica',
+       'colagem', 'prateado', 'hc', '1 Author_mean_encoded',
+       'Dominant Colour Name_mean_encoded']
 
   df_final = scaler.transform(df_inserted.drop(col_drop+list_feats_drop,axis=1)[list_reorder])
 
