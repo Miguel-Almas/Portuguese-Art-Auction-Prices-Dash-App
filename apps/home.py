@@ -201,25 +201,25 @@ layout = html.Div([
             ],style={'width': '100%','display': 'inline-block'}
             ),
           ]),
-          dbc.Col([
-            html.Div(children='''
-              Dimension 3 - Depth of artwork in cm. If unknown, leave as 1.
-              ''',
-              style={
-                'textAlign': 'left',
-              }),
-            html.Div([
-              dcc.Slider(
-                id='slider-dim-3',
-                min=1,
-                max=500,
-                step=1,
-                value=1,
-              ),
-            html.Div(id='slider-output-dim-3'),
-            ],style={'width': '100%','display': 'inline-block'}
-            ),
-          ])
+         # dbc.Col([
+         #   html.Div(children='''
+         #     Dimension 3 - Depth of artwork in cm. If unknown, leave as 1.
+         #     ''',
+         #     style={
+         #       'textAlign': 'left',
+         #     }),
+         #   html.Div([
+         #     dcc.Slider(
+         #       id='slider-dim-3',
+         #       min=1,
+         #       max=500,
+         #       step=1,
+         #       value=1,
+         #     ),
+         #   html.Div(id='slider-output-dim-3'),
+         #   ],style={'width': '100%','display': 'inline-block'}
+         #   ),
+         #  ])
         ]),
         dbc.Row([
             html.Div(children='''
@@ -276,11 +276,11 @@ def update_output(value):
 def update_output(value):
     return 'You have selected "{}" cm'.format(value)
 
-@app.callback(
-    dash.dependencies.Output('slider-output-dim-3', 'children'),
-    [dash.dependencies.Input('slider-dim-3', 'value')])
-def update_output(value):
-    return 'You have selected "{}" cm'.format(value)
+#@app.callback(
+#    dash.dependencies.Output('slider-output-dim-3', 'children'),
+#    [dash.dependencies.Input('slider-dim-3', 'value')])
+#def update_output(value):
+#    return 'You have selected "{}" cm'.format(value)
 
 @app.callback(
     dash.dependencies.Output('slider-output-birth-date', 'children'),
