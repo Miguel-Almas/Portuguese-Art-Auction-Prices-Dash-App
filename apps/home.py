@@ -303,7 +303,7 @@ def update_output(value):
     dash.dependencies.Input('slider-death-date', 'value'),
     dash.dependencies.Input('artist-dropdown', 'value'),
     dash.dependencies.Input('technique-dropdown', 'value')])
-def get_predictions(dim_1,dim_2,dim_3,birth_date,death_date,artist,technique):
+def get_predictions(dim_1,dim_2,birth_date,death_date,artist,technique):
   dim_1 = dim_1
   dim_2 = dim_2
   dim_3 = 1
