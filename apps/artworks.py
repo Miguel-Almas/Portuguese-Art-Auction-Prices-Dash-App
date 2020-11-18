@@ -89,11 +89,11 @@ layout  = html.Div(children=[
                     dash_table.DataTable(
                     id='table_artists',
                     data=[],
-                    style_table={'height': '280px', 'overflowY': 'auto','width': '720px', 'margin-left':'20px','overflowX': 'auto'},
+                    style_table={'height': '280px', 'overflowY': 'auto','width': '215%', 'margin-left':'20px','overflowX': 'auto'},
                     style_cell={'fontSize':10,'height': 'auto','whiteSpace': 'normal'},#, 'font-family':'roboto'}
                     style_cell_conditional=[
                         {'if': {'column_id': '1 Author'},
-                            'width': '97px'},
+                            'width': '97px'}, 
                         {'if': {'column_id': 'Title'},
                             'width': '40px'},
                         {'if': {'column_id': 'Technique'},
