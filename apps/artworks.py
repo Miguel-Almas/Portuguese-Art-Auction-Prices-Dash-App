@@ -62,7 +62,7 @@ layout  = html.Div(children=[
                             html.H4(id='nbr_artists', className="number_artists"),
                             html.P("Total number of artists", className="card-text"),
                         ]),
-                    ],style={"width": "23rem"},),
+                    ],style={"width": "117%"},),
                 style={'margin-left':'5px'}),
                 dbc.Col(
                     dbc.Card([
@@ -71,7 +71,7 @@ layout  = html.Div(children=[
                             html.H4(id='nbr_artists_artworks', className="number_artworks"),
                             html.P("Total number of artworks", className="card-text"),
                         ]),
-                    ],style={"width": "23rem"},),
+                    ],style={"width": "117%"},),
                 style={'margin-right':'0px'}),
             ],style={'padding': 20}),
             dbc.Row([
