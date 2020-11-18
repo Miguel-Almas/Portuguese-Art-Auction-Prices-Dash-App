@@ -109,7 +109,7 @@ layout  = html.Div(children=[
                         {'if': {'column_id': 'Price'},
                             'width': '40px'},
                         ]
-                    ),
+                    ),width=6,
                 ),
             ]),
         ]),
