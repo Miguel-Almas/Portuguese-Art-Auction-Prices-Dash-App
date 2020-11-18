@@ -278,14 +278,14 @@ def graph_nbr_sold_unsold_artworks(value,col):
             value = str.lower(value)
             df_cml_tmp = df_cml_tmp[df_cml_tmp['1 Author'].isin(value)]
 
-       cols_techniques = ['assinar', 'papel', 'datar', 'numerada', 'serigrafia', 'tecnica',
-       'marcar', 'tela', 'misturar', 'defeito', 'pequeno', 'oleo', 'sinal',
-       'europeu', 'uso', 'metal', 'decoracao', 'vidro', 'verso', 'acrilico',
-       'madeira', 'escultura', 'identificar', 'português', 'gravura',
-       'policromada', 'assinatura', 'aguarela', 'tinta', 'china', 'fabricar',
-       'falta', 'cromado', 'italiano', 'portugue', 'material', 'azulejo',
-       'platex', 'mancha', 'cristal', 'dourar', 'autor', 'pintado',
-       'prateado', 'plastico', 'prova', 'hc', 'relevado', 'base']
+        cols_techniques = ['assinar', 'papel', 'datar', 'numerada', 'serigrafia', 'tecnica',
+        'marcar', 'tela', 'misturar', 'defeito', 'pequeno', 'oleo', 'sinal',
+        'europeu', 'uso', 'metal', 'decoracao', 'vidro', 'verso', 'acrilico',
+        'madeira', 'escultura', 'identificar', 'português', 'gravura',
+        'policromada', 'assinatura', 'aguarela', 'tinta', 'china', 'fabricar',
+        'falta', 'cromado', 'italiano', 'portugue', 'material', 'azulejo',
+        'platex', 'mancha', 'cristal', 'dourar', 'autor', 'pintado',
+        'prateado', 'plastico', 'prova', 'hc', 'relevado', 'base']
         cols_targets = ['Sold','Final Price']
         cols = cols_techniques + cols_targets
 
