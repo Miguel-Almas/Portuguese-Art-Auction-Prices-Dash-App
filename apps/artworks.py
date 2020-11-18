@@ -220,7 +220,7 @@ def display_image(n,value):
         else:
             artwork_price = str(tmp_entry['Sale Price'].values[0])+' €'
     else:
-        value = str.lower(value)
+        value = [str.lower(i) for i in value]
         #Get 1 random image from 1 of selected authors
         filt = df_cml['1 Author'].isin(value)
         tmp_entry = df_cml[filt].sample(1)
@@ -249,7 +249,7 @@ def count_nbr_authors(value):
     if value is None or len(value) == 0:
         return df_cml['1 Author'].nunique()
     else:
-        value = str.lower(value)
+        value = [str.lower(i) for i in value]
         return df_cml[df_cml['1 Author'].isin(value)]['1 Author'].nunique()
 
 # Calculate number of artworks by artists
@@ -260,7 +260,7 @@ def count_nbr_authors_artworks(value):
     if value is None or len(value) == 0:
         return df_cml['1 Author'].shape[0]
     else:
-        value = str.lower(value)
+        value = [str.lower(i) for i in value]
         return df_cml[df_cml['1 Author'].isin(value)].shape[0]
 
 #Create graph of sold and unsold artworks by artist
@@ -275,7 +275,7 @@ def graph_nbr_sold_unsold_artworks(value,col):
 
     if col == 'Technique':
         if value is not None and len(value) != 0:
-            value = str.lower(value)
+            value = [str.lower(i) for i in value]
             df_cml_tmp = df_cml_tmp[df_cml_tmp['1 Author'].isin(value)]
 
         cols_techniques = ['assinar', 'papel', 'datar', 'numerada', 'serigrafia', 'tecnica',
@@ -325,7 +325,7 @@ def graph_nbr_sold_unsold_artworks(value,col):
                                                                 number_of_unsold_artworks=lambda x: x.count()-x.sum(),
                                                                sale_rate='mean').sort_values('number_of_auctions',ascending=False)
         else:
-            value = str.lower(value)
+            value = [str.lower(i) for i in value]
             #Sold and unsold artwork by artist
             df_sale_record_artist = df_cml_tmp[df_cml_tmp['1 Author'].isin(value)].groupby(col)['Sold'].agg(number_of_auctions='count',
                                                                 number_of_sold_artworks='sum',
@@ -355,7 +355,7 @@ def graph_boxplot_artists(value,col):
 
     if col == 'Technique':
         if value is not None and len(value) != 0:
-            value = str.lower(value)
+            value = [str.lower(i) for i in value]
             df_cml_tmp = df_cml_tmp[df_cml_tmp['1 Author'].isin(value)]
 
         cols_techniques = ['assinar', 'papel', 'datar', 'numerada', 'serigrafia', 'tecnica',
@@ -384,7 +384,7 @@ def graph_boxplot_artists(value,col):
                                                                 number_of_unsold_artworks=lambda x: x.count()-x.sum(),
                                                                sale_rate='mean').sort_values('number_of_auctions',ascending=False)
         else:
-            value = str.lower(value)
+            value = [str.lower(i) for i in value]
             #Sold and unsold artwork by artist
             df_sale_record_artist = df_cml_tmp[df_cml_tmp['1 Author'].isin(value)].groupby(col)['Sold'].agg(number_of_auctions='count',
                                                                 number_of_sold_artworks='sum',
@@ -417,7 +417,7 @@ def table_artists(value):
     if value is None or len(value) == 0:
         tmp = df_cml
     else:
-        value = str.lower(value)
+        value = [str.lower(i) for i in value]
         tmp = df_cml[df_cml['1 Author'].isin(value)]
     
     tmp = tmp.rename(columns={'Sale Price':'Price'})
