@@ -186,7 +186,7 @@ layout  = html.Div(children=[
                     ),
                 width=6,xs=12,sm=12,md=6,lg=6,xl=6,),   
             ]),
-        ]),
+        ],style={'margin-top':20}),
 ])
 
 ######################### Callback #####################################
