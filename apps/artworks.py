@@ -306,7 +306,7 @@ def graph_nbr_sold_unsold_artworks(value,col):
         fig_sold_unsold_artworks.add_trace(go.Scatter(name='Sale Rate', x=series_sold.index, y=(series_sold.values/(series_sold+series_unsold).values)),secondary_y=True)
 
         # Change the bar mode
-        fig_sold_unsold_artworks.update_layout(barmode='stack',title='Sold and unsold artworks by technique characteristic',hovermode="x unified")
+        fig_sold_unsold_artworks.update_layout(barmode='stack',title='Sold and unsold artworks by technique characteristic',hovermode="x unified",showlegend=False)
         # Set y-axes titles
         fig_sold_unsold_artworks.update_yaxes(title_text="Number artworks", secondary_y=False)
         fig_sold_unsold_artworks.update_yaxes(title_text="Sale rate", secondary_y=True)
@@ -332,7 +332,7 @@ def graph_nbr_sold_unsold_artworks(value,col):
             go.Bar(name='Unsold Artworks', x=df_sale_record_artist[:50].index, y=df_sale_record_artist[:50]['number_of_unsold_artworks'])
         ])
         # Change the bar mode
-        fig_sold_unsold_artworks.update_layout(barmode='stack',title='Sold and unsold artworks by '+ col,hovermode="x unified")
+        fig_sold_unsold_artworks.update_layout(barmode='stack',title='Sold and unsold artworks by '+ col,hovermode="x unified",showlegend=False)
 
     return fig_sold_unsold_artworks
 
@@ -368,7 +368,7 @@ def graph_boxplot_artists(value,col):
             tmp = df_cml_tmp[df_cml_tmp[i] == 1]
             fig_boxplot_sale_price.add_trace(go.Box(name=i, y=tmp["Final Price"]))
 
-        fig_boxplot_sale_price.update_layout(title='Boxplot of artwork price by technique characteristic',hovermode="x unified")
+        fig_boxplot_sale_price.update_layout(title='Boxplot of artwork price by technique characteristic',hovermode="x unified",showlegend=False)
 
     else:
         if value is None or len(value) == 0:
@@ -398,7 +398,7 @@ def graph_boxplot_artists(value,col):
                      color='Dominant Colour Name',color_discrete_sequence =list(df_sale_record_artist[df_sale_record_artist>0].index),points=False,boxmode="overlay")
         else:
             fig_boxplot_sale_price = px.box(df_cml_sorted[filt], x=col, y="Final Price",title='Final sale prices box plot') 
-            fig_boxplot_sale_price.update_layout(hovermode="x unified")
+            fig_boxplot_sale_price.update_layout(hovermode="x unified",showlegend=False)
 
     return fig_boxplot_sale_price
 
