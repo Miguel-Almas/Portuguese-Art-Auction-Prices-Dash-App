@@ -149,7 +149,7 @@ layout  = html.Div(children=[
                     'width':'90%',
                 }),
         ],style={'margin-left': 40},width=6,xs=10,sm=10,md=6,lg=6,xl=6,),
-    ],style={'padding': 0})),
+    ],style={'padding': 0,'margin-bottom':20})),
 
     #Line breaker
 
