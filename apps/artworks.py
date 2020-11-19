@@ -44,11 +44,11 @@ layout  = html.Div(children=[
             'textAlign': 'center',
                 }
             ),
-    dbc.Row([
+    dbc.Col(dbc.Row([
         dbc.Col([
             dbc.Row([
                 dcc.Dropdown(id='artist-dropdown',
-                            options=[{'label':str.title(i),'value':str.title(i)} for i in di.index],
+                            options=[{'label':i,'value':i} for i in di.index],
                             placeholder="Select one or more artists",
                             multi=True,
                             style={"width": "100%", 'margin-left':'20px', 'margin-right':'0px'},
@@ -62,7 +62,7 @@ layout  = html.Div(children=[
                             html.H4(id='nbr_artists', className="number_artists"),
                             html.P("Total number of artists", className="card-text"),
                         ]),
-                    ],style={"width": "117%"},),
+                    ],style={"width": "117%"},), #
                 style={'margin-left':'5px'},width=3,xs=5,sm=5,md=3,lg=3,xl=3,),
                 dbc.Col(
                     dbc.Card([
@@ -71,7 +71,7 @@ layout  = html.Div(children=[
                             html.H4(id='nbr_artists_artworks', className="number_artworks"),
                             html.P("Total number of artworks", className="card-text"),
                         ]),
-                    ],style={"width": "117%"},),
+                    ],style={"width": "117%"},), #,style={"width": "117%"}
                 style={'margin-right':'0px'},width=3,xs=5,sm=5,md=3,lg=3,xl=3,),
             ],style={'padding': 20}),
             dbc.Row([
@@ -85,14 +85,15 @@ layout  = html.Div(children=[
                 style={'margin-left':'20px'},width=6,xs=12,sm=12,md=6,lg=6,xl=6,)
             ]),
             dbc.Row([
+                dbc.Col(
                     dash_table.DataTable(
                     id='table_artists',
                     data=[],
-                    style_table={'height': '280px', 'overflowY': 'auto', 'margin-left':'20px','margin-right':'20px','overflowX': 'auto'},
+                    style_table={'height': '280px','width':'100%', 'overflowY': 'auto', 'margin-left':'20px','margin-right':'00px','overflowX': 'auto'}, #'280px'
                     style_cell={'fontSize':10,'height': 'auto','whiteSpace': 'normal'},#, 'font-family':'roboto'}
                     style_cell_conditional=[
                         {'if': {'column_id': 'Author'},
-                            'width': '100px'},
+                            'width': '110px'},
                         {'if': {'column_id': 'Technique'},
                             'width': '135px'},
                         {'if': {'column_id': 'Dimensions'},
@@ -100,13 +101,14 @@ layout  = html.Div(children=[
                         {'if': {'column_id': 'Author Birth'},
                             'width': '80px'},
                         {'if': {'column_id': 'Author Death'},
-                            'width': '90px'},
+                            'width': '100px'},
                         {'if': {'column_id': 'Price'},
                             'width': '40px'},
                         ]
                     ),
+                ),#width=6,xs=12,sm=12,md=5,lg=5,xl=5,),
             ]),
-        ],width=6,xs=10,sm=10,md=5,lg=5,xl=5,),
+        ],width=6,xs=11,sm=11,md=5,lg=5,xl=5,),
         #Create an image slideshow of the artists paintings
         dbc.Col([
             dbc.Row([
@@ -118,70 +120,73 @@ layout  = html.Div(children=[
                         ])
                     ])
 
-                ]),
+                ],style={'width':'90%'}),
             ],style={'padding': 0,'margin-left':0}),
             #Add information on the painting that is being displayed
             html.Div(id='artwork_artist',
                 style={
                     'textAlign': 'left',
-                }
-            ),
+                    'width':'90%',
+                }),
             html.Div(id='artwork_title',
                 style={
                     'textAlign': 'left',
-                }
-            ),
+                    'width':'90%',
+                }),
             html.Div(id='artwork_technique',
                 style={
                     'textAlign': 'left',
-                }
-            ),
+                    'width':'90%',
+                }),
             html.Div(id='artwork_colour',
                 style={
                     'textAlign': 'left',
-                }
-            ),
+                    'width':'90%',
+                }),
             html.Div(id='artwork_price',
                 style={
                     'textAlign': 'left',
-                }
-            ),
-        ],style={'margin-left': 40,'width':'100%','height':'100%'},width=6,xs=12,sm=12,md=6,lg=6,xl=6,),
-    ],style={'padding': 20}),
+                    'width':'90%',
+                }),
+        ],style={'margin-left': 40},width=6,xs=10,sm=10,md=6,lg=6,xl=6,),
+    ],style={'padding': 0})),
 
     #Line breaker
 
-    dbc.Card(
-        html.H2(children='Graphical Exploration',
-            style={
-                'textAlign': 'center',
-            },
-        ),
-        style={'padding': 20,},#'height':'70px'},#color="dark", inverse=False,
-    ),
-    #Breakdowns for furher filtering
-    dbc.Row([
-        dcc.Dropdown(id='col_to_analyse',
-            options=[{'label':i,'value':i} for i in list_feats],
-            placeholder="Select feature to analyse",
-            multi=False,
-            value = '1 Author',
-            style={"width": "97%",'height':'35px','margin-left':'20px', 'margin-right':'20px'},
-        )],style={'padding':'20px'},
-    ),
-
-    #Rows for graphs
-    dbc.Row([dbc.Col(dcc.Graph(
-                        id='graph_nbr_sold_unsold_artworks',
-                        ),
-                    width=6,xs=12,sm=12,md=6,lg=6,xl=6,
+    dbc.Col([
+            dbc.Card(
+                html.H2(children='Graphical Exploration',
+                    style={
+                        'textAlign': 'center',
+                    },
+                ),
+                style={'padding': 20,},#'height':'70px'},#color="dark", inverse=False,
             ),
-            dbc.Col(dcc.Graph(
+            #Breakdowns for furher filtering
+            dbc.Row([
+                dcc.Dropdown(id='col_to_analyse',
+                    options=[{'label':i,'value':i} for i in list_feats],
+                    placeholder="Select feature to analyse",
+                    multi=False,
+                    value = '1 Author',
+                    style={"width": "97%",'height':'35px','margin-left':'20px', 'margin-right':'20px'},
+                )],style={'padding':'20px'},
+            ),
+
+            #Rows for graphs
+            dbc.Row([
+                dbc.Col(
+                    dcc.Graph(
+                        id='graph_nbr_sold_unsold_artworks',
+                    ),
+                width=6,xs=12,sm=12,md=6,lg=6,xl=6,),
+                dbc.Col(
+                    dcc.Graph(
                         id='graph_boxplot_artists',
-                        ),
-                    width=6,xs=12,sm=12,md=6,lg=6,xl=6,
-            ),   
-    ]),
+                    ),
+                width=6,xs=12,sm=12,md=6,lg=6,xl=6,),   
+            ]),
+        ]),
 ])
 
 ######################### Callback #####################################
