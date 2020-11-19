@@ -63,7 +63,7 @@ layout  = html.Div(children=[
                             html.P("Total number of artists", className="card-text"),
                         ]),
                     ],style={"width": "117%"},),
-                style={'margin-left':'5px'}),
+                style={'margin-left':'5px'},width=3,xs=5,sm=5,md=3,lg=3,xl=3,),
                 dbc.Col(
                     dbc.Card([
                         #dbc.CardHeader("Total number of artists"),
@@ -72,7 +72,7 @@ layout  = html.Div(children=[
                             html.P("Total number of artworks", className="card-text"),
                         ]),
                     ],style={"width": "117%"},),
-                style={'margin-right':'0px'}),
+                style={'margin-right':'0px'},width=3,xs=5,sm=5,md=3,lg=3,xl=3,),
             ],style={'padding': 20}),
             dbc.Row([
                 dbc.Col(
@@ -82,37 +82,31 @@ layout  = html.Div(children=[
                     style={
                     'textAlign': 'center',
                     }),
-                style={'margin-left':'20px'})
+                style={'margin-left':'20px'},width=6,xs=12,sm=12,md=6,lg=6,xl=6,)
             ]),
             dbc.Row([
-                dbc.Col(
                     dash_table.DataTable(
                     id='table_artists',
                     data=[],
-                    style_table={'height': '280px', 'overflowY': 'auto','width': '213%', 'margin-left':'20px','overflowX': 'auto'},
+                    style_table={'height': '280px', 'overflowY': 'auto', 'margin-left':'20px','margin-right':'20px','overflowX': 'auto'},
                     style_cell={'fontSize':10,'height': 'auto','whiteSpace': 'normal'},#, 'font-family':'roboto'}
                     style_cell_conditional=[
-                        {'if': {'column_id': '1 Author'},
-                            'width': '97px'},
-                        {'if': {'column_id': 'Title'},
-                            'width': '30px'},
+                        {'if': {'column_id': 'Author'},
+                            'width': '100px'},
                         {'if': {'column_id': 'Technique'},
                             'width': '135px'},
                         {'if': {'column_id': 'Dimensions'},
                             'width': '120px'},
-                        {'if': {'column_id': '1 Author Birth'},
-                            'width': '100px'},
-                        {'if': {'column_id': '1 Author Death'},
-                            'width': '100px'},
-                        #{'if': {'column_id': 'Sold'},
-                        #    'width': '30px'},
+                        {'if': {'column_id': 'Author Birth'},
+                            'width': '80px'},
+                        {'if': {'column_id': 'Author Death'},
+                            'width': '90px'},
                         {'if': {'column_id': 'Price'},
                             'width': '40px'},
                         ]
-                    ),width=6,
-                ),
+                    ),
             ]),
-        ]),
+        ],width=6,xs=10,sm=10,md=5,lg=5,xl=5,),
         #Create an image slideshow of the artists paintings
         dbc.Col([
             dbc.Row([
@@ -152,7 +146,7 @@ layout  = html.Div(children=[
                     'textAlign': 'left',
                 }
             ),
-        ],style={'margin-left': 40}),
+        ],style={'margin-left': 40,'width':'100%','height':'100%'},width=6,xs=12,sm=12,md=6,lg=6,xl=6,),
     ],style={'padding': 20}),
 
     #Line breaker
@@ -163,7 +157,7 @@ layout  = html.Div(children=[
                 'textAlign': 'center',
             },
         ),
-        style={'padding': 20,'height':'70px'},#color="dark", inverse=False,
+        style={'padding': 20,},#'height':'70px'},#color="dark", inverse=False,
     ),
     #Breakdowns for furher filtering
     dbc.Row([
@@ -180,12 +174,12 @@ layout  = html.Div(children=[
     dbc.Row([dbc.Col(dcc.Graph(
                         id='graph_nbr_sold_unsold_artworks',
                         ),
-                    style={'width': "50%"},
+                    width=6,xs=12,sm=12,md=6,lg=6,xl=6,
             ),
             dbc.Col(dcc.Graph(
                         id='graph_boxplot_artists',
                         ),
-                    style={'width': "50%"}
+                    width=6,xs=12,sm=12,md=6,lg=6,xl=6,
             ),   
     ]),
 ])
@@ -420,9 +414,9 @@ def table_artists(value):
         value = [str.lower(i) for i in value]
         tmp = df_cml[df_cml['1 Author'].isin(value)]
     
-    tmp = tmp.rename(columns={'Sale Price':'Price'})
-    columns=[{"name": i, "id": i} for i in tmp[['1 Author','Title', 'Technique', 'Dimensions',
-                                                '1 Author Birth', '1 Author Death',
+    tmp = tmp.rename(columns={'1 Author':'Author','Sale Price':'Price','1 Author Birth':'Author Birth','1 Author Death':'Author Death'})
+    columns=[{"name": i, "id": i} for i in tmp[['Author', 'Technique', 'Dimensions',#'Title',
+                                                'Author Birth', 'Author Death',
                                                 'Price']].columns]
     data=tmp.to_dict('records')
 

@@ -68,23 +68,23 @@ layout = html.Div([
           dbc.Col(
             html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+"hammer.png", 'rb').read()).decode()),style={'width':'100%','height':'88%'}),style={'margin-top':'35px'}
             #html.Img(src = path+"hammer.png",style={'width':'500px','height':'320px'}),style={'margin-top':'35px'}
-          ,width=6),
+          ,width=6,xs=12,sm=12,md=6,lg=6,xl=6,),
           dbc.Col(
             dbc.Row([
               #html.H1("The Modern Portuguese Auctioned Art dashboard", className="text-center",style={
               #'textAlign': 'center','margin-left':'0px', 'margin-right':'0px'}),
               html.H2(children='Welcome to this dashboard!',style={
-              'textAlign': 'left','margin-top':'0px','margin-left':'0px', 'margin-right':'0px'}),
+              'textAlign': 'left','margin-top':'0px','margin-left':'0px','margin-left':'20px', 'margin-right':'20px'}),
               html.H5(children='This app has two main focus: to allow price prediction based on user input features and exploration of artworks sold in'
                                      ' auctions, with filters by artist.',style={
-              'textAlign': 'left','margin-top':'20px','margin-left':'0px', 'margin-right':'0px'}),
+              'textAlign': 'left','margin-top':'20px','margin-left':'0px','margin-left':'20px', 'margin-right':'20px'}),
               #dbc.Row(dbc.Col(
                 dbc.Card(children=[html.H4(children='Start with the works of art...',className="text-center"),
                                       dcc.Link(dbc.Button('Explore artworks',color="primary",className="mt-3",style={'width':'100%'}), href='/artworks'),
                                        ],
-                             body=True, color="dark", outline=True,style={'margin-top':'20px', 'margin-right':'20px'}),#)),
+                             body=True, color="dark", outline=True,style={'margin-top':'20px','margin-left':'20px', 'margin-right':'20px'}),#)),
             ]),
-          className="mb-5 mt-5",width=6),
+          className="mb-5 mt-5",width=6,xs=12,sm=12,md=6,lg=6,xl=6,),
         ]),
         dbc.Row([
           #html.H2(children='''
