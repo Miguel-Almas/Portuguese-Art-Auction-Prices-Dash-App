@@ -233,7 +233,7 @@ def display_image(n,value):
         artwork_artist = str.title(str(tmp_entry['1 Author'].values[0]))
         artwork_title = str(tmp_entry['Title'].values[0])
         artwork_technique = str.capitalize(str(tmp_entry['Technique'].values[0]))
-        artwork_colour = str.title(sr(tmp_entry['Dominant Colour Name'].values[0]))
+        artwork_colour = str.title(str(tmp_entry['Dominant Colour Name'].values[0]))
         if str.lower(str(tmp_entry['Sale Price'].values[0])) == 'not sold':
             artwork_price = 'Not sold'
         else:
