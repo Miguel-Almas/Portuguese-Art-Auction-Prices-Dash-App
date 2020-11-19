@@ -202,19 +202,19 @@ def display_image(n,value):
         art_nbr = tmp[0].values[0]
         #img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
         #img = html.Img(src = path+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
-        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'CML/'+art_nbr+'.jpg', 'rb').read()).decode()), style={'height':'390px'})
+        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'CML/'+art_nbr+'.jpg', 'rb').read()).decode()), style={'width':'75%'})#390px
 
         #Also return some information on the painting title, technique, author, auction and sale price
-        artwork_artist = str.title(tmp_entry['1 Author'].values[0])
+        artwork_artist = str.title(str(tmp_entry['1 Author'].values[0]))
         artwork_title = str(tmp_entry['Title'].values[0])
-        artwork_technique = str.capitalize(tmp_entry['Technique'].values[0])
-        artwork_colour = str.title(tmp_entry['Dominant Colour Name'].values[0])
-        if str.lower(tmp_entry['Sale Price'].values[0]) == 'not sold':
+        artwork_technique = str.capitalize(str(tmp_entry['Technique'].values[0]))
+        artwork_colour = str.title(str(tmp_entry['Dominant Colour Name'].values[0]))
+        if str.lower(str(tmp_entry['Sale Price'].values[0])) == 'not sold':
             artwork_price = 'Not sold'
         else:
             artwork_price = str(tmp_entry['Sale Price'].values[0])+' €'
     else:
-        value = [str.lower(i) for i in value]
+        value = [str.lower(str(i)) for i in value]
         #Get 1 random image from 1 of selected authors
         filt = df_cml['1 Author'].isin(value)
         tmp_entry = df_cml[filt].sample(1)
@@ -222,14 +222,14 @@ def display_image(n,value):
         art_nbr = tmp[0].values[0]
         #img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
         #img = html.Img(src = path+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
-        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'CML/'+art_nbr+'.jpg', 'rb').read()).decode()), style={'height':'390px'})
+        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'CML/'+art_nbr+'.jpg', 'rb').read()).decode()), style={'height':'75%'})
 
         #Also return some information on the painting title, technique, author, auction and sale price
-        artwork_artist = str.title(tmp_entry['1 Author'].values[0])
+        artwork_artist = str.title(str(tmp_entry['1 Author'].values[0]))
         artwork_title = str(tmp_entry['Title'].values[0])
-        artwork_technique = str.capitalize(tmp_entry['Technique'].values[0])
-        artwork_colour = str.title(tmp_entry['Dominant Colour Name'].values[0])
-        if str.lower(tmp_entry['Sale Price'].values[0]) == 'not sold':
+        artwork_technique = str.capitalize(str(tmp_entry['Technique'].values[0]))
+        artwork_colour = str.title(sr(tmp_entry['Dominant Colour Name'].values[0]))
+        if str.lower(str(tmp_entry['Sale Price'].values[0])) == 'not sold':
             artwork_price = 'Not sold'
         else:
             artwork_price = str(tmp_entry['Sale Price'].values[0])+' €'
