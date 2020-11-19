@@ -29,7 +29,7 @@ navbar = dbc.Navbar(
                 dbc.Row(
                     [
                         #dbc.Col(html.Img(src="/assets/virus.png", height="30px")),
-                        dbc.Col(dbc.NavbarBrand("Modern and Contemporary Portuguese Art Dashboard", className="ml-2")),
+                        dbc.Col(dbc.NavbarBrand("Auctioned Portuguese Modern Art", className="ml-2")),
                     ],
                     align="center",
                     no_gutters=True,
