@@ -42,6 +42,7 @@ layout  = html.Div(children=[
     ''',
             style={
             'textAlign': 'center',
+            'margin-bottom': '20px',
                 }
             ),
     dbc.Col(dbc.Row([
@@ -126,6 +127,7 @@ layout  = html.Div(children=[
             html.Div(id='artwork_artist',
                 style={
                     'textAlign': 'left',
+                    'margin-top':'25px',
                     'width':'90%',
                 }),
             html.Div(id='artwork_title',
@@ -207,7 +209,7 @@ def display_image(n,value):
         art_nbr = tmp[0].values[0]
         #img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
         #img = html.Img(src = path+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
-        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'CML/'+art_nbr+'.jpg', 'rb').read()).decode()), style={'width':'75%'})#390px
+        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'CML/'+art_nbr+'.jpg', 'rb').read()).decode()), style={'height':'60%'})#390px
 
         #Also return some information on the painting title, technique, author, auction and sale price
         artwork_artist = str.title(str(tmp_entry['1 Author'].values[0]))
@@ -227,7 +229,7 @@ def display_image(n,value):
         art_nbr = tmp[0].values[0]
         #img = html.Img(src = app.get_asset_url('\\CML\\'+art_nbr+'.jpg'), style={'height':'390px'})
         #img = html.Img(src = path+'\\CML\\'+art_nbr+'.jpg', style={'height':'390px'})
-        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'CML/'+art_nbr+'.jpg', 'rb').read()).decode()), style={'height':'75%'})
+        img = html.Img(src='data:image/png;base64,{}'.format(base64.b64encode(open(path+'CML/'+art_nbr+'.jpg', 'rb').read()).decode()), style={'height':'60%'})
 
         #Also return some information on the painting title, technique, author, auction and sale price
         artwork_artist = str.title(str(tmp_entry['1 Author'].values[0]))
