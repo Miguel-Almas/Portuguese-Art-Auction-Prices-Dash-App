@@ -86,7 +86,7 @@ layout  = html.Div(children=[
                     dash_table.DataTable(
                     id='table_artists',
                     data=[],
-                    style_table={'height': '280px','width':'100%', 'overflowY': 'auto', 'margin-left':'20px','margin-right':'00px','overflowX': 'auto'}, #'280px'
+                    style_table={'height': '280px','width':'100%', 'overflowY': 'auto', 'margin-left':'20px','margin-right':'00px','overflowX': 'auto',}, #'280px'
                     style_cell={'fontSize':10,'height': 'auto','whiteSpace': 'normal'},#, 'font-family':'roboto'}
                     style_cell_conditional=[
                         {'if': {'column_id': 'Author'},
@@ -103,7 +103,7 @@ layout  = html.Div(children=[
                             'width': '40px'},
                         ]
                     ),
-                ),#width=6,xs=12,sm=12,md=5,lg=5,xl=5,),
+                style={'margin-bottom':'20px'}),#width=6,xs=12,sm=12,md=5,lg=5,xl=5,),
             ]),
         ],width=6,xs=11,sm=11,md=5,lg=5,xl=5,),
         #Create an image slideshow of the artists paintings
