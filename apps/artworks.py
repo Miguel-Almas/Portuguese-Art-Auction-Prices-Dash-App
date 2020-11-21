@@ -57,24 +57,20 @@ layout  = html.Div(children=[
             ]),
             dbc.Row([
                 dbc.Col(
-                    dbc.Card([
-                        #dbc.CardHeader("Total number of artists"),
-                        dbc.CardBody([
-                            html.H4(id='nbr_artists', className="number_artists"),
-                            html.P("Total number of artists", className="card-text"),
-                        ]),
-                    ],style={"width": "117%"},), #
-                style={'margin-left':'5px'},width=3,xs=5,sm=5,md=3,lg=3,xl=3,),
+                    html.Div([
+                        html.P("Number of Artists"),
+                        html.H6(id='nbr_artists', className="number_artists")
+                    ],id="artists",className="pretty_container",style={'Align': 'center',
+                    }),width=6,xs=6,sm=6,md=6,lg=6,xl=6
+                ),
                 dbc.Col(
-                    dbc.Card([
-                        #dbc.CardHeader("Total number of artists"),
-                        dbc.CardBody([
-                            html.H4(id='nbr_artists_artworks', className="number_artworks"),
-                            html.P("Total number of artworks", className="card-text"),
-                        ]),
-                    ],style={"width": "117%"},), #,style={"width": "117%"}
-                style={'margin-right':'0px'},width=3,xs=5,sm=5,md=3,lg=3,xl=3,),
-            ],style={'padding': 20}),
+                    html.Div([
+                        html.P("Number of Artworks"),
+                        html.H6(id='nbr_artists_artworks', className="number_artworks")
+                    ],id="artworks",className="pretty_container",style={'Align': 'center',
+                    }),width=6,xs=6,sm=6,md=6,lg=6,xl=6
+                ),
+            ],style={'textAlign': 'center','margin-left':'25px','margin-top':'20px','margin-bottom':'20px'}),
             dbc.Row([
                 dbc.Col(
                     html.Div(children='''
