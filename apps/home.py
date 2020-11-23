@@ -409,27 +409,9 @@ def get_predictions(dim_1,dim_2,birth_date,death_date,artist,technique):
   col_drop = ['1 Author','1 Author Birth','1 Author Death','Dim 1','Dim 2','Dim 3','Year','Technique','1 Author Birth Decade','1 Author Death Decade','Shape']
   scaler = joblib.load(path+'scaler.bin')
 
-  list_reorder = ['Number of Authors', 'Number of Artworks', 'Year_2018.0', 'Year_2017.0',
-       'Year_2020.0', 'Year_2019.0', '1 Author Birth Decade_1950-1960',
-       '1 Author Birth Decade_séc. xx', '1 Author Birth Decade_1940-1950',
-       '1 Author Birth Decade_1960-1970',
-       '1 Author Birth Decade_no information',
-       '1 Author Birth Decade_1930-1940', '1 Author Birth Decade_1900-1910',
-       '1 Author Birth Decade_1920-1930', '1 Author Birth Decade_1970-1980',
-       '1 Author Birth Decade_1910-1920', '1 Author Birth Decade_1990-2000',
-       '1 Author Birth Decade_1870-1880', '1 Author Birth Decade_1840-1850',
-       '1 Author Birth Decade_1980-1990', '1 Author Birth Decade_séc. xxi',
-       '1 Author Death Decade_no information',
-       '1 Author Death Decade_1990-2000', '1 Author Death Decade_2010-2020',
-       '1 Author Death Decade_1980-1990', '1 Author Death Decade_2020-2030',
-       '1 Author Death Decade_1940-1950', 'Area', 'Shape_Square', 'assinar',
-       'papel', 'datar', 'serigrafia', 'tecnica', 'misturar', 'tela', 'marcar',
-       'defeito', 'oleo', 'sinal', 'europeu', 'decoracao', 'metal', 'vidro',
-       'verso', 'acrilico', 'identificar', 'policromada', 'china', 'fabricar',
-       'assinatura', 'azulejo', 'mancha', 'portugue', '"', 'cromado',
-       'material', 'dourar', 'cristal', 'pintado', 'autor', 'ceramica',
-       'colagem', 'prateado', 'hc', '1 Author_mean_encoded',
-       'Dominant Colour Name_mean_encoded']
+  #Ordered columns
+  with open(path+'features_ordered.npy', 'rb') as f:
+      list_reorder = list(np.load(f,allow_pickle=True))  
 
   df_final = df_inserted.drop(col_drop+list_feats_drop,axis=1)[list_reorder] #scaler.transform(df_inserted.drop(col_drop+list_feats_drop,axis=1)[list_reorder])
 
