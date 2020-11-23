@@ -402,15 +402,8 @@ def get_predictions(dim_1,dim_2,birth_date,death_date,artist,technique):
   #df_inserted['Dominant Colour Name_mean_encoded'] = df_inserted['Dominant Colour Name'].map(df_map_colours.set_index('Dominant Colour Name').to_dict()['median'])
 
   #Features to drop from feature importance
-  list_feats_drop = ['1 Author Death Decade_1900-1910', '1 Author Birth Decade_séc. xix',
-       '1 Author Birth Decade_xx', '1 Author Birth Decade_1880-1890', 'prova',
-       '1 Author Death Decade_2000-2010', 'humidade',
-       '1 Author Death Decade_1960-1970', '1 Author Death Decade_1950-1960',
-       '1 Author Death Decade_1970-1980', '1 Author Death Decade_1910-1920',
-       '1 Author Death Decade_1920-1930', 'platex', 'gravura', 'escultura',
-       '1 Author Death Decade_1930-1940', 'Shape_Horizontal', 'Shape_Vertical',
-       '1 Author Birth Decade_1890-1900', 'falta', 'numerada', 'pequeno',
-       'aguarela', 'uso', 'madeira', 'tinta', 'português', 'italiano']
+  with open(path+'feats_drop.npy', 'rb') as f:
+  	list_feats_drop = list(np.load(f,allow_pickle=True))  
 
   #Scaling 
   col_drop = ['1 Author','1 Author Birth','1 Author Death','Dim 1','Dim 2','Dim 3','Year','Technique','1 Author Birth Decade','1 Author Death Decade','Shape']
