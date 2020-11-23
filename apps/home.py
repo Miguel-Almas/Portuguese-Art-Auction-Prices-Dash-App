@@ -349,31 +349,23 @@ def get_predictions(dim_1,dim_2,birth_date,death_date,artist,technique):
   df_inserted['1 Author Birth Decade'] = df_inserted['1 Author Birth Decade'].fillna('no information')
   df_inserted['1 Author Death Decade'] = df_inserted['1 Author Death Decade'].fillna('no information')
 
-  list_decades_birth = ['1 Author Birth Decade_1950-1960',
-  '1 Author Birth Decade_séc. xx','1 Author Birth Decade_1940-1950','1 Author Birth Decade_1960-1970',
-  '1 Author Birth Decade_no information','1 Author Birth Decade_1930-1940',
-  '1 Author Birth Decade_1900-1910','1 Author Birth Decade_1920-1930',
-  '1 Author Birth Decade_1970-1980','1 Author Birth Decade_1910-1920','1 Author Birth Decade_1890-1900',
-  '1 Author Birth Decade_1990-2000','1 Author Birth Decade_1880-1890','1 Author Birth Decade_1870-1880',
-  '1 Author Birth Decade_1840-1850','1 Author Birth Decade_1980-1990','1 Author Birth Decade_séc. xix',
-  '1 Author Birth Decade_séc. xxi','1 Author Birth Decade_xx']
-
-  list_decades_death = ['1 Author Death Decade_no information','1 Author Death Decade_1990-2000','1 Author Death Decade_2010-2020',
-  '1 Author Death Decade_2000-2010','1 Author Death Decade_1960-1970','1 Author Death Decade_1980-1990','1 Author Death Decade_1950-1960',
-  '1 Author Death Decade_1970-1980','1 Author Death Decade_1910-1920','1 Author Death Decade_2020-2030','1 Author Death Decade_1940-1950',
-  '1 Author Death Decade_1920-1930','1 Author Death Decade_1900-1910','1 Author Death Decade_1930-1940']
+  with open(path+'author_birth_decade.npy', 'rb') as f:
+      list_decades_birth = list(np.load(f,allow_pickle=True))
+    
+  with open(path+'author_death_decade.npy', 'rb') as f:
+      list_decades_death = list(np.load(f,allow_pickle=True))
 
   for i in list_decades_birth:
       if df_inserted['1 Author Birth Decade'].iloc[0] in i:
-          df_inserted[i] = 1
+          df_inserted['1 Author Birth Decade_'+i] = 1
       else:
-          df_inserted[i] = 0
+          df_inserted['1 Author Birth Decade_'+i] = 0
       
   for i in list_decades_death:
       if df_inserted['1 Author Death Decade'].iloc[0] in i:
-          df_inserted[i] = 1
+          df_inserted['1 Author Death Decade_'+i] = 1
       else:
-          df_inserted[i] = 0
+          df_inserted['1 Author Death Decade_'+i] = 0
           
   #Year
   list_years = ['Year_2020.0','Year_2019.0','Year_2018.0','Year_2017.0']
