@@ -376,14 +376,8 @@ def get_predictions(dim_1,dim_2,birth_date,death_date,artist,technique):
           df_inserted[i] = 0
           
   #Technique
-  list_techniques = ['assinar', 'papel', 'datar', 'numerada', 'serigrafia', 'tecnica',
-         'misturar', 'tela','marcar', 'defeito', 'oleo', 'pequeno', 'sinal',
-         'uso','europeu', 'decoracao','metal', 'vidro', 'verso', 'acrilico',
-         'madeira', 'escultura', 'gravura', 'identificar', 'português', 
-         'tinta', 'policromada', 'china', 'fabricar', 'aguarela', 'assinatura',    
-         'azulejo', 'falta', 'mancha', 'portugue', '"', 'cromado', 'italiano',  'material', 
-         'platex',  'dourar','cristal',  'pintado', 'autor', 
-         'ceramica','humidade','colagem','prova','prateado', 'hc']
+  with open(path+'techniques.npy', 'rb') as f:
+      list_techniques = list(np.load(f,allow_pickle=True))  
 
   for i in list_techniques:
       if i in df_inserted['Technique'].iloc[0]:
