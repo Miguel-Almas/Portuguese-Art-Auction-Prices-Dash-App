@@ -175,7 +175,7 @@ layout = html.Div([
               dcc.Slider(
                 id='slider-dim-1',
                 min=1,
-                max=500,
+                max=200,
                 step=1,
                 value=1,
               ),
@@ -194,7 +194,7 @@ layout = html.Div([
               dcc.Slider(
                 id='slider-dim-2',
                 min=1,
-                max=500,
+                max=200,
                 step=1,
                 value=1,
               ),
